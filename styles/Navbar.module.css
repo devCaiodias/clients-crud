@@ -1,0 +1,26 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100px;
+}
+
+.navbar h3 {
+    color: #fbf7ba;
+}
+
+.input_nav {
+    background: transparent;
+    border: 1px solid #fbf7ba;
+    padding: 5px;
+    color: white;
+}
+
+.btn_add {
+    background: none;
+    padding: 10px;
+    color: #fbf7ba;
+    border: 2px solid #fbf7ba;
+    border-radius: 10px;
+    cursor: pointer;
+}
