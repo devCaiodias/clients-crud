@@ -6,21 +6,21 @@
 }
 
 .navbar h3 {
-    color: #fbf7ba;
+    color: #F27999;
 }
 
 .input_nav {
     background: transparent;
-    border: 1px solid #fbf7ba;
+    border: 1px solid #F27999;
     padding: 5px;
-    color: white;
+    color: #F27999;
 }
 
 .btn_add {
     background: none;
     padding: 10px;
-    color: #fbf7ba;
-    border: 2px solid #fbf7ba;
+    color: white;
+    border: 2px solid #F27999;
     border-radius: 10px;
     cursor: pointer;
 }

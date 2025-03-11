@@ -1,7 +1,7 @@
 'use client'
 import style from '../../../styles/TableList.module.css';
 
-export default function TableList() {
+export default function TableList({handleOpen}: any) {
 
     let clients = [
         {nome: "Caio", email: "Caio@gmail.com", job: "Developer", rate: "100", isactive: true},
@@ -37,7 +37,7 @@ export default function TableList() {
                                 <td>{client.rate}</td>
                                 <td><button className={`${style.btn} ${client.isactive ? `${style.btn_isactive}  ` : `${style.btn_isoff}`}`}>{client.isactive ? 'Active' : 'Inactive'}</button></td>
                                 <td>
-                                    <button className={style.btn_update}>Update</button>
+                                    <button onClick={() => handleOpen("edit")} className={style.btn_update}>Update</button>
                                 </td>
                                 <td>
                                     <button className={style.btn_delete}>Delete</button>

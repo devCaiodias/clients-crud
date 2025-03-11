@@ -20,7 +20,6 @@
 }
 
 .table_ td {
-    border: 1px solid #fbf7ba;
     padding: 10px;
     text-align: center;
 }
@@ -34,8 +33,16 @@
 }
 
 .btn_isactive {
-    background-color: green;
+    background-color: #F23078;
     border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn_isactive:hover {
+    background: transparent;
+    border: 2px solid #F2D98D;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
@@ -44,24 +51,34 @@
 
 .btn_isoff {
     background: transparent;
-    border: 2px solid white;
+    border: 2px solid #F2D98D;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.btn_isoff:hover {
+    background-color: #F23078;
+    border: none;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
 }
 
 .btn_update {
-    background-color: blueviolet;
-    border: none;
+    border: 2px solid #F27999;
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
+    background: none;
+    color: white;
 }
 
 .btn_delete {
-    background-color: red;
-    border: none;
+    border: 2px solid rgb(236, 76, 76);
     padding: 10px 20px;
     cursor: pointer;
     border-radius: 10px;
+    background: none;
+    color: white;
 }
