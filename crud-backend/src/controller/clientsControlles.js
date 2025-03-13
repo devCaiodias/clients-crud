@@ -20,3 +20,19 @@ export const createClients = async (req, res) => {
         res.status(500).json({message: 'internal serve'})
     }
 }
+
+export const updateClients = async (req, res) => {
+    try {
+        const clientId = req.params.id
+        const clientData = req.body
+        const updateClientt = await clientService.updateClient(clientData, clientId)
+        if (!updateClientt) {
+            return res.status(404).json({message: 'internal serve'})
+        }
+
+        res.status(200).json(updateClientt)
+    }catch (err) {
+        console.error('Error fetching clients:', err);
+        res.status(500).json({message: 'internal serve'})
+    }
+}

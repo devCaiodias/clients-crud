@@ -15,3 +15,15 @@ export const createClient = async (clientData) => {
 
     return rows[0];
 }
+
+export const updateClient = async (clientData, clientsId) => {
+    const {name, email, job, rate, isactive} = clientData;
+
+    const {rows} = await query(
+            `UPDATE clients_db SET name = $1, email = $2, job = $3, rate = $4, isactive = $5 
+            WHERE id = $6 RETURNING *`,
+            [name, email, job, rate, isactive, clientsId]
+        );
+
+    return rows[0];
+}
