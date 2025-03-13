@@ -27,3 +27,8 @@ export const updateClient = async (clientData, clientsId) => {
 
     return rows[0];
 }
+
+export const deleteClient = async (clientsId) => {
+    const {rowCount} = await query(`DELETE FROM clients_db WHERE id = $1`, [clientsId])
+    return rowCount > 0
+}
