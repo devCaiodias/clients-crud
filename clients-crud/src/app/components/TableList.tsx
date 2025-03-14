@@ -1,17 +1,39 @@
 'use client'
+import { useEffect, useState } from 'react';
 import style from '../../../styles/TableList.module.css';
+import axios from 'axios';
+
+interface Client {
+    id: number;
+    name: string;
+    email: string;
+    job: string;
+    rate: string;
+    isactive: boolean;
+}
 
 export default function TableList({handleOpen}: any) {
 
-    let clients = [
-        {nome: "Caio", email: "Caio@gmail.com", job: "Developer", rate: "100", isactive: true},
-        {nome: "Vin", email: "Vin@gmail.com", job: "Developer", rate: "100", isactive: true},
-        {nome: "Joao", email: "Joao@gmail.com", job: "Developer", rate: "100", isactive: false},
-        {nome: "Debora", email: "Debora@gmail.com", job: "Developer", rate: "100", isactive: true},
-    ]
+    const [tableData, setTableData] = useState<Client[]>([])
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const fechData = async () => {
+            try {
+                const response = await axios.get("http://localhost:8000/api/clients/")
+                setTableData(response.data)
+            } catch (err: any) {
+                setError(err?.message || "Ocorreu um erro ao buscar os dados.");
+            }
+        }
+
+        fechData()
+    }, [])
 
     return (
         <>
+
+            {error && <div>{error}</div>}
             <div className={style.div_table}>
                 <table className={style.table_}>
                     {/* head */}
@@ -27,11 +49,10 @@ export default function TableList({handleOpen}: any) {
                     </thead>
                     <tbody>
                     {/* row 1 */}
-                    {clients.map((client, index) => {
-                        return (
-                            <tr key={index}>
-                                <th>{index + 1}</th>
-                                <td>{client.nome}</td>
+                    {tableData.map((client) => (
+                            <tr key={client.id}>
+                                <th>{client.id}</th>
+                                <td>{client.name}</td>
                                 <td>{client.email}</td>
                                 <td>{client.job}</td>
                                 <td>{client.rate}</td>
@@ -44,7 +65,7 @@ export default function TableList({handleOpen}: any) {
                                 </td>
                             </tr>
                         )
-                    })}
+                    )}
                     </tbody>
                 </table>
             </div>
