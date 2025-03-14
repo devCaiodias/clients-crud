@@ -12,7 +12,7 @@ interface Client {
     isactive: boolean;
 }
 
-export default function TableList({handleOpen}: any) {
+export default function TableList({handleOpen, search}: any) {
 
     const [tableData, setTableData] = useState<Client[]>([])
     const [error, setError] = useState<string | null>(null);
@@ -29,6 +29,12 @@ export default function TableList({handleOpen}: any) {
 
         fechData()
     }, [])
+
+    const filtradoData = tableData.filter(client => 
+        client.name.toLowerCase().includes(search.toLowerCase()) ||
+        client.email.toLowerCase().includes(search.toLowerCase()) ||
+        client.job.toLowerCase().includes(search.toLowerCase())
+    )
 
     return (
         <>
@@ -49,7 +55,7 @@ export default function TableList({handleOpen}: any) {
                     </thead>
                     <tbody>
                     {/* row 1 */}
-                    {tableData.map((client) => (
+                    {filtradoData.map((client) => (
                             <tr key={client.id}>
                                 <th>{client.id}</th>
                                 <td>{client.name}</td>
